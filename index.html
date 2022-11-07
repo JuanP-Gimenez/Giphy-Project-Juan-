@@ -24,9 +24,46 @@
 
       <section class="random-section">
         <div class="random">
-          <div class="random__giphy">
-            <picture class="random__giphy--item"></picture>
-          </div>
+          <div class="random__giphy"></div>
+        </div>
+        <button class="btn random-btn">
+          <svg class="random-btn__icon">
+            <use href="src/img/icons.svg#icon-plus-circle"></use>
+          </svg>
+          Next
+        </button>
+      </section>
+
+      <section class="finder-section">
+        <div class="finder">
+          <form class="search">
+            <input
+              type="text"
+              class="search__field"
+              placeholder="search giphy"
+            />
+            <button class="btn search__btn">
+              <svg class="search__icon">
+                <use href="src/img/icons.svg#icon-search"></use>
+              </svg>
+              <span>Search</span>
+            </button>
+          </form>
+        </div>
+        <div class="results"></div>
+        <div class="pagination">
+          <!-- <button class="btn--inline pagination__btn--prev">
+            <svg class="search__icon">
+              <use href="src/img/icons.svg#icon-arrow-left"></use>
+            </svg>
+            <span>Page 1</span>
+          </button>
+          <button class="btn--inline pagination__btn--next">
+            <span>Page 3</span>
+            <svg class="search__icon">
+              <use href="src/img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </button> -->
         </div>
       </section>
     </div>

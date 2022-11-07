@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/JuanP-Gimenez/Giphy-Project-Juan-#readme",
   "dependencies": {
+    "core-js": "^3.26.0",
     "parcel": "^2.7.0",
+    "regenerator-runtime": "^0.13.10",
     "sass": "^1.56.0"
   },
   "devDependencies": {

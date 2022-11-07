@@ -1,27 +1,65 @@
 import { API_URL, API_KEY } from "./config.js";
-console.log("TEST");
+import * as model from "./model.js";
+import randomGiphyView from "./views/randomGiphyView.js";
+import finderView from "./views/finderView.js";
+import resultsView from "./views/resultsView.js";
+import paginationView from "./views/paginationView.js";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import { async } from "regenerator-runtime";
 
-const showGiphy = async () => {
+// if (module.hot) {
+//   module.hot.accept();
+// }
+
+const controlGiphy = async () => {
   try {
-    const res = await fetch(`${API_URL}random?api_key=${API_KEY}`);
-    const data = await res.json();
-
-    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-
-    let giphy = data.data;
-    giphy = {
-      id: giphy.id,
-      title: giphy.title,
-      url: giphy.url,
-    };
-    console.log(giphy);
+    randomGiphyView.renderSpinner();
+    // Loading giphy
+    await model.showRandomGiphy();
 
     // Render giphy
-    const markup = `
-    `;
+    randomGiphyView.render(model.state.giphy);
   } catch (err) {
-    console.error(err);
-    throw err;
+    randomGiphyView.renderError();
   }
 };
-showGiphy();
+
+const controlFinderResults = async () => {
+  try {
+    resultsView.renderSpinner();
+
+    // Get finder query
+    const query = finderView.getQuery();
+    if (!query) return;
+
+    // Load finder results
+    await model.showFinderResults(query);
+
+    // Render results
+    //resultsView.render(model.state.search.results);
+    resultsView.render(model.searchResultsPerPage());
+
+    // Render initial pagination buttons
+    paginationView.render(model.state.search);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const controlPagination = (goToPage) => {
+  // Render NEW results
+  resultsView.render(model.searchResultsPerPage(goToPage));
+
+  // Render NEW pagination buttons
+  paginationView.render(model.state.search);
+};
+
+const init = () => {
+  controlGiphy();
+  finderView.addHandlerFinder(controlFinderResults);
+  paginationView.addHandlerClick(controlPagination);
+  randomGiphyView.addHandlerNewRandomGif(controlGiphy);
+};
+
+init();

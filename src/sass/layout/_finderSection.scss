@@ -1,0 +1,60 @@
+.finder {
+  & h2 {
+    text-align: center;
+  }
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+
+  &__icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &__field {
+    width: 90%;
+    height: 5vh;
+  }
+
+  &__btn {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    align-items: center;
+    align-self: center;
+    width: 90%;
+
+    &--icon {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+}
+
+.results {
+  display: none;
+}
+
+.results--active {
+  display: flex;
+}
+
+.pagination {
+  display: none;
+}
+
+.pagination--active {
+  display: flex;
+}
+
+.btn--inline {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  align-items: center;
+  align-self: center;
+  width: 70%;
+}

@@ -9,8 +9,8 @@ class TrendingView extends View {
       .map((gif, i) => {
         return `
       <picture class="trending__giphy--item">
-          <img src="${gif.preview.url}" alt="${gif.title}">
-          <h3>${gif.title}</h3>
+          <img src="${gif.fixedWidthSmall.url}" alt="${gif.title}">
+          <p>${gif.title}</p>
       </picture>
   `;
       })

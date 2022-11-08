@@ -5,6 +5,7 @@ import finderView from "./views/finderView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
 import trendingView from "./views/trendingView.js";
+import navigationView from "./views/navigationView.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { async } from "regenerator-runtime";

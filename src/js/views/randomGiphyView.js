@@ -8,8 +8,8 @@ class RandomGiphyView extends View {
   _generateMarkup() {
     return `
     <picture class="random__giphy--item">
-        <img src="${this._data.original.url}" alt="">
-        <h3>${this._data.title}</h3>
+        <img src="${this._data.fixedWidthSmall.url}" alt="">
+        <p>${this._data.title}</p>
     </picture>
 `;
   }
@@ -18,7 +18,7 @@ class RandomGiphyView extends View {
     this._parentElement
       .closest(".random-section")
       .addEventListener("click", function (e) {
-        const btn = e.target.closest(".random-btn");
+        const btn = e.target.closest(".random__btn");
         if (!btn) return;
         handler();
       });

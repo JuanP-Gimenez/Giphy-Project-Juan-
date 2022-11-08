@@ -14,45 +14,82 @@
         <h1>Giphy Project</h1>
       </header>
 
-      <nav class="navigation">
-        <ul>
-          <li>random icon</li>
-          <li>search icon</li>
-          <li>trending icon</li>
-        </ul>
-      </nav>
-
       <main>
-        <section class="random-section">
-          <div class="random">
-            <div class="random__giphy"></div>
+        <nav class="navigation">
+          <div class="navigation__tab-container">
+            <button
+              class="navigation__tab navigation__tab--1 navigation__tab--active"
+              data-tab="1"
+            >
+              <svg class="navigation__list--icon">
+                <use href="src/img/icons.svg#icon-gifImage"></use>
+              </svg>
+            </button>
+            <button class="navigation__tab navigation__tab--2" data-tab="2">
+              <svg class="navigation__list--icon">
+                <use href="src/img/icons.svg#icon-gifSearch"></use>
+              </svg>
+            </button>
+            <button class="navigation__tab navigation__tab--3" data-tab="3">
+              <svg class="navigation__list--icon">
+                <use href="src/img/icons.svg#icon-gifTrending"></use>
+              </svg>
+            </button>
           </div>
-          <button class="btn random-btn">
-            <svg class="random-btn__icon">
-              <use href="src/img/icons.svg#icon-plus-circle"></use>
-            </svg>
-            Next
-          </button>
+
+          <!-- <ul class="navigation__list">
+            <li>
+              <svg class="navigation__list--icon">
+                <use href="src/img/icons.svg#icon-gifImage"></use>
+              </svg>
+            </li>
+            <li>
+              <svg class="navigation__list--icon">
+                <use href="src/img/icons.svg#icon-gifSearch"></use>
+              </svg>
+            </li>
+            <li>
+              <svg class="navigation__list--icon">
+                <use href="src/img/icons.svg#icon-gifTrending"></use>
+              </svg>
+            </li>
+          </ul> -->
+        </nav>
+
+        <section class="random-section">
+          <div
+            class="random navigation__content navigation__content--1 navigation__content--active"
+          >
+            <h2>Random</h2>
+            <div class="random__giphy"></div>
+            <button class="random__btn">
+              Next
+              <svg class="random__btn--icon">
+                <use href="src/img/icons.svg#icon-reload"></use>
+              </svg>
+            </button>
+          </div>
         </section>
 
         <section class="finder-section">
-          <div class="finder">
+          <div class="finder navigation__content navigation__content--2">
+            <h2>Finder</h2>
             <form class="search">
               <input
                 type="text"
                 class="search__field"
                 placeholder="search giphy"
               />
-              <button class="btn search__btn">
-                <svg class="search__icon">
+              <button class="search__btn">
+                <span>Search</span>
+                <svg class="search__btn--icon">
                   <use href="src/img/icons.svg#icon-search"></use>
                 </svg>
-                <span>Search</span>
               </button>
             </form>
           </div>
-          <div class="results"></div>
-          <div class="pagination">
+          <div class="results results--active"></div>
+          <div class="pagination pagination--active">
             <!-- <button class="btn--inline pagination__btn--prev">
               <svg class="search__icon">
                 <use href="src/img/icons.svg#icon-arrow-left"></use>
@@ -68,7 +105,7 @@
           </div>
         </section>
 
-        <section class="trending">
+        <section class="trending navigation__content navigation__content--3">
           <div class="trending__gifs"></div>
         </section>
       </main>

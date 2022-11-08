@@ -1,0 +1,30 @@
+.random {
+  & h2 {
+    text-align: center;
+  }
+
+  &__giphy {
+    margin: 1rem;
+  }
+
+  &__giphy--item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__giphy--item p {
+    text-align: end;
+  }
+  &__btn {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    align-items: center;
+    align-self: center;
+    width: 70%;
+
+    &--icon {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+}

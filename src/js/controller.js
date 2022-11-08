@@ -4,6 +4,7 @@ import randomGiphyView from "./views/randomGiphyView.js";
 import finderView from "./views/finderView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
+import trendingView from "./views/trendingView.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { async } from "regenerator-runtime";
@@ -55,8 +56,21 @@ const controlPagination = (goToPage) => {
   paginationView.render(model.state.search);
 };
 
+const controlTrending = async () => {
+  try {
+    trendingView.renderSpinner();
+
+    await model.showTrendingGiphy();
+
+    trendingView.render(model.state.trending);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const init = () => {
   controlGiphy();
+  controlTrending();
   finderView.addHandlerFinder(controlFinderResults);
   paginationView.addHandlerClick(controlPagination);
   randomGiphyView.addHandlerNewRandomGif(controlGiphy);

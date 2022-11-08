@@ -10,15 +10,18 @@ export const state = {
     page: 1,
     resultsPerPage: RES_PER_PAGE,
   },
+  trending: {
+    results: [],
+  },
 };
 
 export const showRandomGiphy = async () => {
   try {
     const data = await fetch(`${API_URL}random?api_key=${API_KEY}`);
     const dataJson = await data.json();
-    console.log(dataJson);
+
     const giphy = dataJson.data;
-    console.log(giphy);
+
     state.giphy = {
       fixedWidth: giphy.images?.fixed_width,
       original: giphy.images.original,
@@ -62,4 +65,25 @@ export const searchResultsPerPage = (page = state.search.page) => {
   const end = page * state.search.resultsPerPage; // 5;
 
   return state.search.results.slice(start, end);
+};
+
+export const showTrendingGiphy = async () => {
+  try {
+    const data = await fetch(`${API_URL}trending?api_key=${API_KEY}`);
+    const trenData = await data.json();
+    console.log(trenData.data);
+    state.trending.results = trenData.data.map((gif) => {
+      return {
+        fixedWidth: gif.images?.fixed_width,
+        original: gif.images.original,
+        fixedWidthDownsampled: gif.images.fixed_width_downsampled,
+        fixedWidthSmall: gif.images.fixed_width_small,
+        preview: gif.images.downsized_still,
+        title: gif.title,
+      };
+    });
+  } catch (err) {
+    console.error(`${err} 💥💥💥`);
+    throw err;
+  }
 };

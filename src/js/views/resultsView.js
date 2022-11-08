@@ -6,7 +6,6 @@ class ResultsView extends View {
     "No Gifs were found for your query! Please try another one :(";
 
   _generateMarkup() {
-    console.log(this._data);
     return this._data.map(this._generateMarkupPreview).join("");
   }
 

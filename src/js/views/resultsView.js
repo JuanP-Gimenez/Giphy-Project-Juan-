@@ -9,11 +9,12 @@ class ResultsView extends View {
     return this._data.map(this._generateMarkupPreview).join("");
   }
 
-  _generateMarkupPreview(result) {
+  _generateMarkupPreview(result, index) {
     return `
-    <picture class="results__giphy--item">
-        <img src="${result.preview.url}" alt="${result.title}">
-        <h3>${result.title}</h3>
+    <picture class="results--active__item results--active__item--${index + 1}">
+        <img class="results--active__img" src="${
+          result.previewWebp.url
+        }" alt="${result.title}">
     </picture>
 `;
   }

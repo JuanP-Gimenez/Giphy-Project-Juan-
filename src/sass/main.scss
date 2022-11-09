@@ -1,5 +1,7 @@
-@import "components";
+@import "abstracts/variables";
+@import "layout/components";
 @import "base/base";
 @import "layout/navigation";
 @import "layout/randomSection";
 @import "layout/finderSection";
+@import "layout/trendingSection";

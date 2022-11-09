@@ -8,7 +8,6 @@ class NavigationView {
 
     tabsContainer.addEventListener("click", function (e) {
       const clicked = e.target.closest(".navigation__tab");
-      console.log(clicked);
 
       if (!clicked) return;
 

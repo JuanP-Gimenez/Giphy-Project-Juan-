@@ -12,6 +12,10 @@
     width: 3rem;
     height: 3rem;
   }
+
+  &__tab {
+    border-style: none;
+  }
 }
 
 .navigation__tab-container {
@@ -20,7 +24,12 @@
 }
 
 .navigation__tab--active {
-  border: solid red;
+  border-top: solid $color-secondary;
+  background-color: #9e97b5;
+
+  & svg {
+    fill: $color-white;
+  }
 }
 
 .navigation__content {
@@ -30,4 +39,5 @@
 .navigation__content--active {
   display: flex;
   flex-direction: column;
+  gap: 8rem;
 }

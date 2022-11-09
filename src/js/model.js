@@ -15,21 +15,26 @@ export const state = {
   },
 };
 
-export const showRandomGiphy = async () => {
+const createGifObject = (data) => {
+  return {
+    fixedWidth: data.images?.fixed_width,
+    original: data.images.original,
+    fixedWidthDownsampled: data.images.fixed_width_downsampled,
+    fixedWidthSmall: data.images.fixed_width_small,
+    downStill: data.images.downsized_still,
+    previewWebp: data.images.preview_webp,
+
+    title: data.title,
+  };
+};
+
+export const showRandomGiphy = async function () {
   try {
     const data = await fetch(`${API_URL}random?api_key=${API_KEY}`);
     const dataJson = await data.json();
-
     const giphy = dataJson.data;
-
-    state.giphy = {
-      fixedWidth: giphy.images?.fixed_width,
-      original: giphy.images.original,
-      fixedWidthDownsampled: giphy.images.fixed_width_downsampled,
-      fixedWidthSmall: giphy.images.fixed_width_small,
-      preview: giphy.images.downsized_still,
-      title: giphy.title,
-    };
+    console.log(giphy.images);
+    state.giphy = createGifObject(giphy);
   } catch (err) {
     console.error(`${err} 💥💥💥`);
     throw err;
@@ -43,16 +48,7 @@ export const showFinderResults = async (query) => {
     const data = await fetch(`${API_URL}search?api_key=${API_KEY}&q=${query}`);
     const giphyResults = await data.json();
 
-    state.search.results = giphyResults.data.map((gif) => {
-      return {
-        fixedWidth: gif.images?.fixed_width,
-        original: gif.images.original,
-        fixedWidthDownsampled: gif.images.fixed_width_downsampled,
-        fixedWidthSmall: gif.images.fixed_width_small,
-        preview: gif.images.downsized_still,
-        title: gif.title,
-      };
-    });
+    state.search.results = giphyResults.data.map((gif) => createGifObject(gif));
   } catch (err) {
     console.error(`${err} 💥💥💥`);
     throw err;
@@ -71,17 +67,8 @@ export const showTrendingGiphy = async () => {
   try {
     const data = await fetch(`${API_URL}trending?api_key=${API_KEY}`);
     const trenData = await data.json();
-    console.log(trenData.data);
-    state.trending.results = trenData.data.map((gif) => {
-      return {
-        fixedWidth: gif.images?.fixed_width,
-        original: gif.images.original,
-        fixedWidthDownsampled: gif.images.fixed_width_downsampled,
-        fixedWidthSmall: gif.images.fixed_width_small,
-        preview: gif.images.downsized_still,
-        title: gif.title,
-      };
-    });
+
+    state.trending.results = trenData.data.map((gif) => createGifObject(gif));
   } catch (err) {
     console.error(`${err} 💥💥💥`);
     throw err;

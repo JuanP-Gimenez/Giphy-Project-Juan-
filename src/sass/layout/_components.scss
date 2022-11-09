@@ -1,9 +1,23 @@
 .header {
-  color: $color-white;
   background-color: $color-black;
   text-align: center;
   text-transform: uppercase;
   padding: 1.5rem;
+
+  & h1 {
+    background: -webkit-linear-gradient(
+      -86deg,
+      #0a89e7 15%,
+      #ba07ca 35%,
+      #ff2200 35%,
+      #f6dd24 91%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 4px transparent;
+    color: $color-white;
+    letter-spacing: 0.5rem;
+  }
 }
 
 .spinner {

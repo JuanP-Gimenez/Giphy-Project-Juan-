@@ -1,3 +1,13 @@
+.finder-section {
+  background: -webkit-linear-gradient(
+    -45deg,
+    #ff372b 0%,
+    #7d25d9 40%,
+    #35abf0 60%,
+    #25d949 75%
+  );
+}
+
 .finder {
   & h2 {
     text-align: center;
@@ -10,6 +20,7 @@
   align-items: center;
   width: 70%;
   margin: auto;
+  gap: 3rem;
 
   &__icon {
     width: 3rem;
@@ -17,16 +28,21 @@
   }
 
   &__field {
+    border: none;
+    border-radius: 1rem;
+    border: transparent;
     width: 90%;
     height: 5vh;
+    padding: 1.5rem;
+    font-weight: 300;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__btn {
-    display: grid;
     grid-template-columns: 4fr 1fr;
-    align-items: center;
-    align-self: center;
-    width: 90%;
 
     &--icon {
       width: 3rem;
@@ -72,12 +88,12 @@
 
 .pagination--active {
   display: flex;
+  justify-content: space-around;
 }
 
 .btn--inline {
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-  align-items: center;
-  align-self: center;
-  width: 70%;
+  display: flex;
+  //grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  width: 30%;
 }

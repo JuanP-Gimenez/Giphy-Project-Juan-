@@ -7,10 +7,11 @@
   & h1 {
     background: -webkit-linear-gradient(
       -86deg,
-      #0a89e7 15%,
-      #ba07ca 35%,
-      #ff2200 35%,
-      #f6dd24 91%
+      #ff372b 0%,
+      #7d25d9 40%,
+      #35abf0 60%,
+      #25d949 75%,
+      #faec20 85%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -39,5 +40,30 @@
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.btn {
+  display: grid;
+  //grid-template-columns: 3fr 1fr;
+  align-items: center;
+  align-self: center;
+  border-style: none;
+  background-color: $color-secondary;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  transition: all 0.2s;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    box-shadow: 1px 29px 54px -5px rgba(0, 0, 0, 0.63);
+    border-style: inherit;
+    border: solid $color-black;
+
+    svg {
+      animation: rotate 4s infinite linear;
+    }
   }
 }

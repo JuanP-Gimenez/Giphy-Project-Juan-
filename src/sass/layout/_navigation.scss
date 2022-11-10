@@ -26,6 +26,7 @@
 .navigation__tab--active {
   border-top: solid $color-secondary;
   background-color: #9e97b5;
+  padding: 0.7rem;
 
   & svg {
     fill: $color-white;
@@ -39,5 +40,5 @@
 .navigation__content--active {
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  gap: 3rem;
 }

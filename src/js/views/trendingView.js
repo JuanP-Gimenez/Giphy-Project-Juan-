@@ -10,7 +10,7 @@ class TrendingView extends View {
         if (i < 12)
           return `
       <picture class="trending-gifs__item trending-gifs__item--${i + 1}">
-          <img class="trending-gifs__img" src="${gif.downStill.url}" alt="${
+          <img class="trending-gifs__img" src="${gif.original.url}" alt="${
             gif.title
           }">
       </picture>

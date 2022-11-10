@@ -8,7 +8,7 @@ class RandomGiphyView extends View {
   _generateMarkup() {
     return `
     <picture class="random__giphy--item">
-        <img src="${this._data.previewWebp.url}" alt="">
+        <img src="${this._data.downsized.url}" alt="">
         <p>${this._data.title}</p>
     </picture>
 `;

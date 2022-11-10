@@ -1,27 +1,43 @@
 .random {
+  //background-color: rgba(#35abf0, 0.4);
+  background: -webkit-linear-gradient(
+    -45deg,
+    #ff372b 0%,
+    #7d25d9 40%,
+    #35abf0 60%,
+    #25d949 75%
+  );
+
   & h2 {
     margin-top: 2rem;
     text-align: center;
   }
 
   &__giphy {
+    height: 60vh;
     margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-top: 3rem solid $color-black;
+    border-bottom: 3rem solid $color-black;
+    border-left: 1rem solid $color-black;
+    border-right: 1rem solid $color-black;
+    border-radius: 2rem;
   }
 
   &__giphy--item {
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
   }
 
   &__giphy--item p {
     text-align: end;
   }
   &__btn {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    align-items: center;
-    align-self: center;
     width: 70%;
+    grid-template-columns: 3fr 1fr;
 
     &--icon {
       width: 3rem;

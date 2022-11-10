@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/sass/main.scss" />
+    <link
+      rel="shortcut icon"
+      href="src/img/giphy-logo.png"
+      type="image/x-icon"
+    />
     <script type="module" src="src/js/controller.js"></script>
     <title>Giphy project Juan</title>
   </head>
@@ -22,17 +27,17 @@
               data-tab="1"
             >
               <svg class="navigation__list--icon">
-                <use href="src/img/icons.svg#icon-gifImage"></use>
+                <use xlink:href="src/img/sprite.svg#icon-tv"></use>
               </svg>
             </button>
             <button class="navigation__tab navigation__tab--2" data-tab="2">
               <svg class="navigation__list--icon">
-                <use href="src/img/icons.svg#icon-gifSearch"></use>
+                <use xlink:href="src/img/sprite.svg#icon-search"></use>
               </svg>
             </button>
             <button class="navigation__tab navigation__tab--3" data-tab="3">
               <svg class="navigation__list--icon">
-                <use href="src/img/icons.svg#icon-gifTrending"></use>
+                <use href="src/img/sprite.svg#icon-like"></use>
               </svg>
             </button>
           </div>
@@ -44,7 +49,7 @@
           >
             <h2>Random</h2>
             <div class="random__giphy"></div>
-            <button class="random__btn">
+            <button class="random__btn btn">
               Next
               <svg class="random__btn--icon">
                 <use href="src/img/icons.svg#icon-reload"></use>
@@ -57,12 +62,8 @@
           <div class="finder navigation__content navigation__content--2">
             <h2>Finder</h2>
             <form class="search">
-              <input
-                type="text"
-                class="search__field"
-                placeholder="search giphy"
-              />
-              <button class="search__btn">
+              <input type="text" class="search__field" required />
+              <button class="search__btn btn">
                 <span>Search</span>
                 <svg class="search__btn--icon">
                   <use href="src/img/icons.svg#icon-search"></use>
@@ -74,7 +75,9 @@
           <div class="pagination pagination--active"></div>
         </section>
 
-        <section class="trending navigation__content navigation__content--3">
+        <section
+          class="trending-section navigation__content navigation__content--3"
+        >
           <h2>Trending</h2>
           <div class="trending-gifs"></div>
         </section>

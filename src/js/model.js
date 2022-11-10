@@ -19,9 +19,12 @@ const createGifObject = (data) => {
   return {
     fixedWidth: data.images?.fixed_width,
     original: data.images.original,
+    fixedHeightSmall: data.images.fixed_height_small,
+    fixedHeight: data.images.fixed_height,
     fixedWidthDownsampled: data.images.fixed_width_downsampled,
     fixedWidthSmall: data.images.fixed_width_small,
     downStill: data.images.downsized_still,
+    downsized: data.images.downsized_medium,
     previewWebp: data.images.preview_webp,
 
     title: data.title,
@@ -45,7 +48,9 @@ export const showFinderResults = async (query) => {
   try {
     state.search.query = query;
 
-    const data = await fetch(`${API_URL}search?api_key=${API_KEY}&q=${query}`);
+    const data = await fetch(
+      `${API_URL}search?api_key=${API_KEY}&q=${query}&rating=g`
+    );
     const giphyResults = await data.json();
 
     state.search.results = giphyResults.data.map((gif) => createGifObject(gif));

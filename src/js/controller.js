@@ -44,6 +44,7 @@ const controlFinderResults = async () => {
 
     // Render initial pagination buttons
     paginationView.render(model.state.search);
+    console.log(model.state.search.page);
   } catch (err) {
     console.log(err);
   }
@@ -52,7 +53,7 @@ const controlFinderResults = async () => {
 const controlPagination = (goToPage) => {
   // Render NEW results
   resultsView.render(model.searchResultsPerPage(goToPage));
-
+  console.log(goToPage);
   // Render NEW pagination buttons
   paginationView.render(model.state.search);
 };

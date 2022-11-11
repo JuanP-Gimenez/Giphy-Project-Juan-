@@ -2,8 +2,8 @@ import View from "./View";
 
 class ResultsView extends View {
   _parentElement = document.querySelector(".results");
-  _errorMessage =
-    "No Gifs were found for your query! Please try another one :(";
+  _parentElError = document.querySelector(".error-container");
+  _errorMessage = "No Gifs were found! Please try another one 🙃";
 
   _generateMarkup() {
     return this._data.map(this._generateMarkupPreview).join("");

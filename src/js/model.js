@@ -17,11 +17,11 @@ export const state = {
 
 const createGifObject = (data) => {
   return {
-    fixedWidth: data.images?.fixed_width,
     original: data.images.original,
     fixedHeightSmall: data.images.fixed_height_small,
     fixedHeight: data.images.fixed_height,
     fixedWidthDownsampled: data.images.fixed_width_downsampled,
+    fixedWidth: data.images.fixed_width,
     fixedWidthSmall: data.images.fixed_width_small,
     downStill: data.images.downsized_still,
     downsized: data.images.downsized_medium,
@@ -33,27 +33,34 @@ const createGifObject = (data) => {
 
 export const showRandomGiphy = async function () {
   try {
-    const data = await fetch(`${API_URL}random?api_key=${API_KEY}`);
-    const dataJson = await data.json();
-    const giphy = dataJson.data;
-    console.log(giphy.images);
-    state.giphy = createGifObject(giphy);
+    // API call to return random GIPHY
+    const { data } = await AJAX(`${API_URL}random?api_key=${API_KEY}`);
+    console.log(data);
+    state.giphy = createGifObject(data);
   } catch (err) {
-    console.error(`${err} 💥💥💥`);
     throw err;
   }
+  // try {
+  //   const data = await fetch(`${API_URL}random?api_key=${API_KEY}`);
+  //   const dataJson = await data.json();
+  //   const giphy = dataJson.data;
+  //   console.log(giphy.images);
+  //   state.giphy = createGifObject(giphy);
+  // } catch (err) {
+  //   console.error(`${err} 💥💥💥`);
+  //   throw err;
+  // }
 };
 
 export const showFinderResults = async (query) => {
   try {
     state.search.query = query;
 
-    const data = await fetch(
+    const data = await AJAX(
       `${API_URL}search?api_key=${API_KEY}&q=${query}&rating=g`
     );
-    const giphyResults = await data.json();
 
-    state.search.results = giphyResults.data.map((gif) => createGifObject(gif));
+    state.search.results = data.data.map((gif) => createGifObject(gif));
   } catch (err) {
     console.error(`${err} 💥💥💥`);
     throw err;
@@ -70,10 +77,10 @@ export const searchResultsPerPage = (page = state.search.page) => {
 
 export const showTrendingGiphy = async () => {
   try {
-    const data = await fetch(`${API_URL}trending?api_key=${API_KEY}`);
-    const trenData = await data.json();
+    const data = await AJAX(`${API_URL}trending?api_key=${API_KEY}`);
+    //const trenData = await data.json();
 
-    state.trending.results = trenData.data.map((gif) => createGifObject(gif));
+    state.trending.results = data.data.map((gif) => createGifObject(gif));
   } catch (err) {
     console.error(`${err} 💥💥💥`);
     throw err;

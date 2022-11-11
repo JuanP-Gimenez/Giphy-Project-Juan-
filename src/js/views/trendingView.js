@@ -2,6 +2,7 @@ import View from "./View";
 
 class TrendingView extends View {
   _parentElement = document.querySelector(".trending-gifs");
+  _parentElError = document.querySelector(".trending-section");
   _errorMessage = "Oh no, something went snap!";
 
   _generateMarkup() {

@@ -1,24 +1,32 @@
 .trending-section {
-  background: -webkit-linear-gradient(
-    -45deg,
-    #ff372b 0%,
-    #7d25d9 40%,
-    #35abf0 60%,
-    #25d949 75%
-  );
+  @include bgColored;
+  height: 100vh;
+
+  @include respond(desktop) {
+    height: 100%;
+  }
 
   & h2 {
     text-align: center;
+    background-color: #7d25d9;
+    box-shadow: 0px 9px 19px -4px rgba(0, 0, 0, 0.52);
+    padding: 1rem;
+    color: $color-white;
+    font-size: 2.5rem;
   }
 }
 
 .trending-gifs {
   display: grid;
-  //grid-column: full-start / full-end;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(5);
   gap: 1rem;
   padding: 1.5rem;
+
+  @include respond(desktop) {
+    display: flex;
+    flex-direction: column;
+  }
 
   &__item {
     &--2 {

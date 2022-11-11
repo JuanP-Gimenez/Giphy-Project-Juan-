@@ -5,19 +5,7 @@
   padding: 1.5rem;
 
   & h1 {
-    background: -webkit-linear-gradient(
-      -86deg,
-      #ff372b 0%,
-      #7d25d9 40%,
-      #35abf0 60%,
-      #25d949 75%,
-      #faec20 85%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-stroke: 4px transparent;
-    color: $color-white;
-    letter-spacing: 0.5rem;
+    @include headerStroke;
   }
 }
 
@@ -28,7 +16,7 @@
   svg {
     height: 6rem;
     width: 6rem;
-    fill: red;
+    //fill: rgba(-45deg, #ff372b 0%, #7d25d9 40%, #35abf0 60%, #25d949 75%);
     animation: rotate 2s infinite linear;
   }
 }
@@ -36,6 +24,22 @@
 @keyframes rotate {
   0% {
     transform: rotate(0);
+    fill: #ff372b;
+  }
+
+  25% {
+    transform: rotate(90);
+    fill: #7d25d9;
+  }
+
+  50% {
+    transform: rotate(180);
+    fill: #35abf0;
+  }
+
+  75% {
+    transform: rotate(180);
+    fill: #25d949;
   }
 
   100% {
@@ -51,9 +55,11 @@
   border-style: none;
   background-color: $color-secondary;
   border-radius: 1rem;
+  font-size: 1.8rem;
   padding: 1rem;
   margin-bottom: 3rem;
   transition: all 0.2s;
+  cursor: pointer;
 
   &:hover,
   &:focus {
@@ -65,5 +71,27 @@
     svg {
       animation: rotate 4s infinite linear;
     }
+  }
+}
+
+.error-container {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.error {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 30%;
+  background-color: $color-white;
+  padding: 1rem;
+
+  & svg {
+    @include iconSize;
+    fill: red;
   }
 }

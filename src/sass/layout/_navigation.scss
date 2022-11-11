@@ -1,4 +1,7 @@
 .navigation {
+  @include respond(desktop) {
+    display: none;
+  }
   &__list {
     display: flex;
     justify-content: space-around;
@@ -9,12 +12,16 @@
   }
 
   &__list--icon {
-    width: 3rem;
-    height: 3rem;
+    @include iconSize;
   }
 
   &__tab {
     border-style: none;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom: 6px ridge #b7bac7;
+    }
   }
 }
 
@@ -24,17 +31,26 @@
 }
 
 .navigation__tab--active {
-  border-top: solid $color-secondary;
+  border-top: 0.5rem solid $color-secondary;
   background-color: #9e97b5;
   padding: 0.7rem;
 
   & svg {
     fill: $color-white;
   }
+
+  &:hover {
+    border-bottom: none;
+  }
 }
 
 .navigation__content {
   display: none;
+
+  @include respond(desktop) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .navigation__content--active {

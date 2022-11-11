@@ -9,42 +9,17 @@ const timeout = (s) => {
   });
 };
 
-// export const AJAX = async function (url) {
-//   try {
-//     const res = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
-//     const data = await res.json();
-//     console.log(data);
-//     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-//     return data;
-//   } catch (err) {
-//     // if (err.message === "Failed to fetch")
-//     //   err.message =
-//     //     "Unable to load GIPHY at this time. Please check connection and try again.";
-//     throw err;
-//   }
-// };
-
-// export const AJAX = async (url) => {
-//   try {
-//     const res = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
-//     const data = res.json();
-
-//     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-//     return data;
-//   } catch (err) {
-//     throw err;
-//   }
-// };
 export const AJAX = async function (url) {
   try {
-    const res = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
+    const res = await fetch(url);
     const data = await res.json();
-    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+    console.log(data);
+    if (!res.ok) throw new Error(`${res.message} (${res.status})`);
     return data;
   } catch (err) {
     if (err.message === "Failed to fetch")
       err.message =
-        "Unable to load GIPHY at this time. Please check connection and try again.";
+        "Oh no! Something went snap 🙃. Please check your internet connection";
     throw err;
   }
 };

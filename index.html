@@ -19,7 +19,7 @@
         <h1>Giphy Project</h1>
       </header>
 
-      <main>
+      <main class="sections-container">
         <nav class="navigation">
           <div class="navigation__tab-container">
             <button
@@ -62,7 +62,7 @@
           <div class="finder navigation__content navigation__content--2">
             <h2>Finder</h2>
             <form class="search">
-              <input type="text" class="search__field" required />
+              <input type="text" class="search__field" />
               <button class="search__btn btn">
                 <span>Search</span>
                 <svg class="search__btn--icon">
@@ -70,8 +70,9 @@
                 </svg>
               </button>
             </form>
+            <div class="error-container"></div>
+            <div class="results results--active"></div>
           </div>
-          <div class="results results--active"></div>
           <div class="pagination pagination--active"></div>
         </section>
 

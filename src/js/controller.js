@@ -23,7 +23,8 @@ const controlGiphy = async () => {
     // Render giphy
     randomGiphyView.render(model.state.giphy);
   } catch (err) {
-    randomGiphyView.renderError();
+    console.log(err.message);
+    randomGiphyView.renderError(err.message);
   }
 };
 
@@ -33,7 +34,7 @@ const controlFinderResults = async () => {
 
     // Get finder query
     const query = finderView.getQuery();
-    if (!query) return;
+    if (!query) throw new Error("Please, enter your search 🤔");
 
     // Load finder results
     await model.showFinderResults(query);
@@ -46,7 +47,8 @@ const controlFinderResults = async () => {
     paginationView.render(model.state.search);
     console.log(model.state.search.page);
   } catch (err) {
-    console.log(err);
+    console.error(err);
+    resultsView.renderError(err.message);
   }
 };
 
@@ -67,6 +69,7 @@ const controlTrending = async () => {
     trendingView.render(model.state.trending);
   } catch (err) {
     console.log(err);
+    trendingView.renderError(err.message);
   }
 };
 

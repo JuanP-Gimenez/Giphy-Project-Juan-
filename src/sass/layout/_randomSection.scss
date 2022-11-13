@@ -1,5 +1,5 @@
 .random {
-  @include bgColored;
+  //@include bgColored;
   @include respond(desktop) {
     height: 100%;
   }
@@ -14,7 +14,8 @@
 
   &__giphy {
     height: 60vh;
-    margin: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,17 +25,24 @@
     border-left: 1rem solid $color-black;
     border-right: 1rem solid $color-black;
     border-radius: 2rem;
+
+    @include respond(desktop) {
+      height: 45vh;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    @include respond(tab-land) {
+      height: 75vh;
+    }
   }
 
-  &__giphy--item {
-    // display: flex;
-    // flex-direction: column;
+  &__giphy--item img {
+    @include respond(desktop) {
+      width: 100%;
+    }
   }
 
-  &__giphy--item p {
-    text-align: end;
-    padding-right: 8rem;
-  }
   &__btn {
     width: 70%;
     grid-template-columns: 3fr 1fr;

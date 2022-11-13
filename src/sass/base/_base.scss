@@ -34,11 +34,12 @@ body {
   min-height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
+  @include bgColored;
 }
 
 .sections-container {
   @include respond(desktop) {
     display: grid;
-    grid-template-columns: 3fr 6fr 3fr;
+    grid-template-columns: 3fr 7fr 3fr;
   }
 }

@@ -25,6 +25,23 @@
   );
 }
 
+@mixin borderColored {
+  box-shadow: 0px 30px 51px 4px rgba(0, 0, 0, 0.56);
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-right-width: 3px;
+  border-right-style: solid;
+  border-image: linear-gradient(
+      -35deg,
+      #ff372b 0%,
+      #7d25d9 40%,
+      #35abf0 60%,
+      #25d949 75%,
+      #faec20 85%
+    )
+    1 100%;
+}
+
 @mixin iconSize {
   width: 3rem;
   height: 3rem;
@@ -37,12 +54,12 @@
     } //600px
   }
   @if $breakpoint == tab-land {
-    @media only screen and (min-width: 56.25em) {
+    @media only screen and (min-width: 56.25em) and (max-width: 74em) {
       @content;
     } //900px
   }
   @if $breakpoint == desktop {
-    @media only screen and (min-width: 70em) {
+    @media only screen and (min-width: 75em) {
       @content;
     } //1200px
   }

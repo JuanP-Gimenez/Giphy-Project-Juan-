@@ -27,6 +27,7 @@ export default class View {
           <svg>
             <use href="${icons}#icon-spinner5"></use>
           </svg>
+          <p>Giphy’s will be here in a jiffy ...</p>
         </div>
       `;
     this._clear();

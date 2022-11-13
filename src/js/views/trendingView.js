@@ -2,7 +2,7 @@ import View from "./View";
 
 class TrendingView extends View {
   _parentElement = document.querySelector(".trending-gifs");
-  _parentElError = document.querySelector(".trending-section");
+  _parentElError = document.querySelector(".trending-grid");
   _errorMessage = "Oh no, something went snap!";
 
   _generateMarkup() {
@@ -11,7 +11,9 @@ class TrendingView extends View {
         if (i < 12)
           return `
       <picture class="trending-gifs__item trending-gifs__item--${i + 1}">
-          <img class="trending-gifs__img" src="${gif.original.url}" alt="${
+          <source srcset="${gif.previewGif.url}"
+                  media="(max-width: 37em)"/>
+          <img class="trending-gifs__img" src="${gif.previewWebp.url}" alt="${
             gif.title
           }">
       </picture>

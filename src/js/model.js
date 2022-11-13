@@ -17,15 +17,15 @@ export const state = {
 
 const createGifObject = (data) => {
   return {
-    original: data.images.original,
-    fixedHeightSmall: data.images.fixed_height_small,
-    fixedHeight: data.images.fixed_height,
-    fixedWidthDownsampled: data.images.fixed_width_downsampled,
-    fixedWidth: data.images.fixed_width,
-    fixedWidthSmall: data.images.fixed_width_small,
-    downStill: data.images.downsized_still,
-    downsized: data.images.downsized_medium,
-    previewWebp: data.images.preview_webp,
+    original: data.images?.original,
+    fixedWidth: data.images?.fixed_width,
+    fixedWidthSmall: data.images?.fixed_width_small,
+    downStill: data.images?.downsized_still,
+    downsized: data.images?.downsized_medium,
+    downsizedLarge: data.images?.downsized,
+    previewWebp: data.images?.preview_webp,
+    previewGif: data.images?.preview_gif,
+    preview: data.images?.preview,
 
     title: data.title,
   };
@@ -77,7 +77,7 @@ export const searchResultsPerPage = (page = state.search.page) => {
 
 export const showTrendingGiphy = async () => {
   try {
-    const data = await AJAX(`${API_URL}trending?api_key=${API_KEY}`);
+    const data = await AJAX(`${API_URL}trending?api_key=${API_KEY}&limit=10`);
     //const trenData = await data.json();
 
     state.trending.results = data.data.map((gif) => createGifObject(gif));

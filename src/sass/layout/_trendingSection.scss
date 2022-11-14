@@ -1,5 +1,4 @@
 .trending-section {
-  //@include bgColored;
   height: 100%;
 
   @include respond(desktop) {
@@ -22,11 +21,6 @@
   grid-template-rows: repeat(5);
   gap: 1rem;
   padding: 1.5rem;
-
-  // @include respond(desktop) {
-  //   display: flex;
-  //   flex-direction: column;
-  // }
 
   &__item {
     &--2 {

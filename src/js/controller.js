@@ -1,4 +1,3 @@
-import { API_URL, API_KEY } from "./config.js";
 import * as model from "./model.js";
 import randomGiphyView from "./views/randomGiphyView.js";
 import finderView from "./views/finderView.js";
@@ -23,7 +22,7 @@ const controlGiphy = async () => {
     // Render giphy
     randomGiphyView.render(model.state.giphy);
   } catch (err) {
-    console.log(err.message);
+    console.error(err.message);
     randomGiphyView.renderError(err.message);
   }
 };
@@ -45,7 +44,6 @@ const controlFinderResults = async () => {
 
     // Render initial pagination buttons
     paginationView.render(model.state.search);
-    console.log(model.state.search.page);
   } catch (err) {
     console.error(err);
     resultsView.renderError(err.message);
@@ -55,7 +53,7 @@ const controlFinderResults = async () => {
 const controlPagination = (goToPage) => {
   // Render NEW results
   resultsView.render(model.searchResultsPerPage(goToPage));
-  console.log(goToPage);
+
   // Render NEW pagination buttons
   paginationView.render(model.state.search);
 };
@@ -68,7 +66,7 @@ const controlTrending = async () => {
 
     trendingView.render(model.state.trending);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     trendingView.renderError(err.message);
   }
 };

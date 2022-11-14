@@ -1,5 +1,4 @@
 import View from "./View.js";
-import icons from "url:../../img/icons.svg";
 
 class RandomGiphyView extends View {
   _parentElement = document.querySelector(".random__giphy");

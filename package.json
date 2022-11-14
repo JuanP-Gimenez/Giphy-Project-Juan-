@@ -2,9 +2,9 @@
   "name": "giphy-project-juan-",
   "version": "1.0.0",
   "description": "Giphy App",
-  "main": "index.js",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "repository": {
     "type": "git",

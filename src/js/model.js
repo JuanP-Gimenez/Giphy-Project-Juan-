@@ -1,5 +1,5 @@
 import { API_URL, API_KEY, RES_PER_PAGE } from "./config";
-import { fetchData } from "./helpers";
+import { fetchData } from "./helpers.js";
 
 export const state = {
   giphy: {},

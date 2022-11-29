@@ -4,14 +4,8 @@ import finderView from "./views/finderView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
 import trendingView from "./views/trendingView.js";
-import navigationView from "./views/navigationView.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
-import { async } from "regenerator-runtime";
-
-// if (module.hot) {
-//   module.hot.accept();
-// }
 
 const controlGiphy = async () => {
   try {
@@ -39,7 +33,6 @@ const controlFinderResults = async () => {
     await model.showFinderResults(query);
 
     // Render results
-    //resultsView.render(model.state.search.results);
     resultsView.render(model.searchResultsPerPage());
 
     // Render initial pagination buttons

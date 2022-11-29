@@ -1,6 +1,5 @@
-import { async } from "regenerator-runtime";
-import { API_URL, API_KEY, TIMEOUT_SEC, RES_PER_PAGE } from "./config";
-import { AJAX, getJSON } from "./helpers";
+import { API_URL, API_KEY, RES_PER_PAGE } from "./config";
+import { fetchData } from "./helpers";
 
 export const state = {
   giphy: {},
@@ -17,22 +16,22 @@ export const state = {
 
 const createGifObject = (data) => {
   return {
-    original: data.images?.original,
-    fixedWidth: data.images?.fixed_width,
-    fixedWidthSmall: data.images?.fixed_width_small,
-    downStill: data.images?.downsized_still,
-    downsizedLarge: data.images?.downsized,
-    previewWebp: data.images?.preview_webp,
-    previewGif: data.images?.preview_gif,
-    preview: data.images?.preview,
-    title: data.title,
+    original: data?.images?.original,
+    fixedWidth: data?.images?.fixed_width,
+    fixedWidthSmall: data?.images?.fixed_width_small,
+    downStill: data?.images?.downsized_still,
+    downsizedLarge: data?.images?.downsized,
+    previewWebp: data?.images?.preview_webp,
+    previewGif: data?.images?.preview_gif,
+    preview: data?.images?.preview,
+    title: data?.title,
   };
 };
 
 export const showRandomGiphy = async function () {
   try {
     // API call to return random GIPHY
-    const { data } = await AJAX(`${API_URL}random?api_key=${API_KEY}`);
+    const { data } = await fetchData(`${API_URL}random?api_key=${API_KEY}`);
 
     state.giphy = createGifObject(data);
   } catch (err) {
@@ -44,7 +43,7 @@ export const showFinderResults = async (query) => {
   try {
     state.search.query = query;
 
-    const data = await AJAX(
+    const data = await fetchData(
       `${API_URL}search?api_key=${API_KEY}&q=${query}&rating=g`
     );
 
@@ -65,7 +64,9 @@ export const searchResultsPerPage = (page = state.search.page) => {
 
 export const showTrendingGiphy = async () => {
   try {
-    const data = await AJAX(`${API_URL}trending?api_key=${API_KEY}&limit=10`);
+    const data = await fetchData(
+      `${API_URL}trending?api_key=${API_KEY}&limit=12`
+    );
 
     state.trending.results = data.data.map((gif) => createGifObject(gif));
   } catch (err) {

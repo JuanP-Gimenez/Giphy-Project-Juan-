@@ -1,6 +1,4 @@
-import { async } from "regenerator-runtime";
-
-export const AJAX = async function (url) {
+export const fetchData = async function (url) {
   try {
     const res = await fetch(url);
     const data = await res.json();
